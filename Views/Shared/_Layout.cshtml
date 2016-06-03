@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/layout.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/maxheight.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="main">
+
+        <!-- header -->
+        <div id="header">
+            <div class="row-1">
+                <div class="wrapper">
+                    <div class="logo">
+                        <h1><a href="#">Royal Bites</a></h1>
+                        <em>Hotel</em> <strong>True Luxury</strong>
+                    </div>
+                    <div class="phones">
+                       041 2600072<br />
+                       0322-6284874
+                    </div>
+                </div>
+            </div>
+            <div class="row-2">
+                <div class="indent">
+                    <!-- header-box begin -->
+                    <div class="header-box">
+                        <div class="inner">
+                            <ul class="nav">
+                                <li><a href="/UserHome/HomePage" class="current">Home page</a></li>
+                                <li><a href="/UserServices/Services">Services</a></li>
+                                <li><a href="/UserGallery/Gallery">Gallery</a></li>
+                                <li><a href="/UserHome/Restaurant">Restaurant</a></li>
+                                <li><a href="/UserHome/Testimonials">Testimonials</a></li>
+                                <li><a href="/UserBooking/Booking">Booking</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- header-box end -->
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+        <div id="footer">
+            <ul class="nav">
+                @* <li><a href="#">Home</a>|</li>
+                    <li><a href="#">Services</a>|</li>
+                    <li><a href="#">Gallery</a>|</li>
+                    <li><a href="#">Restaurant</a>|</li>
+                    <li><a href="#">Testimonials</a>|</li>
+                    <li><a href="#">Booking</a></li>*@
+            </ul>
+            <div class="wrapper">
+                <div class="fleft">Copyright &copy; 2015 <a href="#">Royal Bites & Elegancy</a>. All Rights Reserved</div>
+                <div class="fright"> <a href="/Home/index">Logout</a> </div>
+                <br/>
+                <div class="fright"> <a href="/Home/About">About</a> </div>
+            </div>
+        </div>
+
+        
+        @RenderSection("scripts", required: false)
+    </div>
+</body>
+</html>

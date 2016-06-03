@@ -1,0 +1,290 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+@*<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">*@
+@model FinalProjectD01.Models.Room
+@*<head>*@
+<title>Royal Bites & Elegancy | Booking</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/layout.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/maxheight.js" type="text/javascript"></script>
+
+@* <script src="~/Scripts/jquery-1.7.1.js"></script>*@
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+<!--[if lt IE 7]>
+<link href="ie_style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="ie_png.js"></script>
+<script type="text/javascript">ie_png.fix('.png, #header .row-2, #header .nav li a, #content, .gallery li');</script>
+<![endif]-->
+@*</head>
+    <body id="page5" onload="new ElementMaxHeight();">*@
+
+@* <div id="main">*@
+<!-- header -->
+@*  <div id="header">
+      <div class="row-1">
+        <div class="wrapper">
+          <div class="logo">
+            <h1><a href="#">Five Star</a></h1>
+            <em>Hotel</em> <strong>True Luxury</strong> </div>
+          <div class="phones"><input type="text" name="search" placeholder="search"/>
+              <input type="submit" value="Search">
+        </div>
+
+        </div>
+        </div>
+
+      <div class="row-2">
+        <div class="indent">
+          <!-- header-box begin -->
+          <div class="header-box">
+            <div class="inner">
+              <ul class="nav">
+               <li><a href="/UserHome/HomePage" class="current">Home page</a></li>
+                <li><a href="/UserServices/Services">Services</a></li>
+                   <li><a href="/UserGallery/Gallery">Gallery</a></li>
+                <li><a href="/UserHome/Restaurant">Restaurant</a></li>
+                <li><a href="/UserHome/Testimonials">Testimonials</a></li>
+                 <li><a href="/UserBooking/Booking">Booking</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- header-box end -->
+        </div>
+      </div>
+    </div>*@
+<!-- content -->
+<div id="content">
+    <div class="wrapper">
+        <div class="aside maxheight">
+            <!-- box begin -->
+            <div class="box maxheight">
+                <div class="inner">
+
+                    <h3>Make A Reservation</h3>
+                    <form method="post" action="../UserBooking/Reserve" id="Form1">
+                        <fieldset>
+                            <div class="field">
+                                <label>Check In :</label>
+
+                                <input type="date" name="CancelDate1" />
+
+                            </div>
+                            <div class="field">
+                                <label>Check Out :</label>
+
+                                <input type="date" name="CancelDate2" />
+                            </div>
+                            <div class="field">
+                                Persons : &nbsp;
+                                @Html.TextBoxFor(Model => Model.noOfPeople)
+
+                                @*<input type="text" name="noOfPeople" />*@
+                                &nbsp; &nbsp; &nbsp; &nbsp;User Id :&nbsp;
+                                @Html.TextBoxFor(model => model.userId)
+                                @*<input type="text" name="User Id" />*@
+                                <label>Category :</label>
+                                <select name="Category" class="s1">
+                                    <option>Business Class</option>
+                                    <option>Discounted Class</option>
+                                    <option>Premium Class</option>
+                                </select>
+
+                            </div>
+
+                        </fieldset>
+                        <div class="button"><span><span><input type="submit" name="reserve" value="Make A Reservation"></span></span></div>
+                    </form>
+                </div>
+            </div>
+            <!-- box end -->
+
+        </div>
+        <div class="aside maxheight">
+            <!-- box begin -->
+            <div class="box maxheight">
+                <div class="inner">
+                    <h3>Check Availability</h3>
+                    @*<form method="post" action ="../UserBooking/Available" id="Form2">*@
+                    <fieldset>
+                        <div class="field">
+                            <label>Check In :</label>
+
+                            <input type="date" id="CancelDate1" name="CancelDate1" />
+
+                        </div>
+                        <div class="field">
+                            <label>Check Out :</label>
+
+                            <input type="date" id="CancelDate2" name="CancelDate2" />
+                        </div>
+                        <div class="field">
+                            &nbsp;
+                            @* @Html.TextBoxFor(Model=>Model.noOfPeople)*@
+
+                            @*<input type="text" name="noOfPeople" />*@
+                            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                            @*  @Html.TextBoxFor(model=>model.userId)*@
+                            @*<input type="text" name="User Id" />*@
+                            <label>Category :</label>
+                            <select name="Category" id="Category" class="s1">
+                                <option>Business Class</option>
+                                <option>Discounted Class</option>
+                                <option>Premium Class</option>
+                            </select>
+
+                        </div>
+
+                    </fieldset>
+                    <div class="button"><span><span><input type="button" name="check" id="link12" value="Check Availability"></span></span></div>
+                    <input type="text" name="Name1" id="Result" />
+
+                    @*            </form>*@
+                </div>
+            </div>
+            <!-- box end -->
+
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#link12').click(function () {
+                    var CancelDate1 = $('#CancelDate1').val();
+                    var CancelDate2 = $('#CancelDate2').val();
+                    var Category = $('#Category').val();
+                    //$.getJSON("/UserBooking/Available", function (data) {//"/UserBooking/Available?Category="+Category, function (data) { //CancelDate1=" + CancelDate1  "&CancelDate2=" + CancelDate2 + "&Category=" + Category, function (data) {
+                    $.getJSON("../UserBooking/Available?Category=" + Category + "&CancelDate1=" + CancelDate1 + "&CancelDate2=" + CancelDate2, function (data) {
+                        if (data > 0) {
+                            $('#Result').val("Room is available");
+                        }
+                        else {
+                            $('#Result').val("Room is not available");
+                        }
+                    });
+
+                });
+            })
+        </script>
+        <div class="aside maxheight">
+            <!-- box begin -->
+            <div class="box maxheight">
+                <div class="inner">
+                    <h3>Cancel Reservation</h3>
+                    <form method="post" action="../UserBooking/Cancel" id="Form3">
+                        <fieldset>
+                            <div class="field">
+                                <label>Check In :</label>
+
+                                <input type="date" name="CancelDate1" />
+
+                            </div>
+                            <div class="field">
+                                <label>Check Out :</label>
+
+                                <input type="date" name="CancelDate2" />
+                            </div>
+                            <div class="field">
+                                Persons : &nbsp;
+                                
+                                @Html.TextBoxFor(Model => Model.noOfPeople)
+
+                                &nbsp; &nbsp; &nbsp; &nbsp;User Id :&nbsp;
+                                @Html.TextBoxFor(model => model.userId)
+                                <label>Category :</label>
+                                <select name="Category" class="s1">
+                                    <option>Business Class</option>
+                                    <option>Discounted Class</option>
+                                    <option>Premium Class</option>
+                                </select>
+
+                            </div>
+
+                        </fieldset>
+                        <div class="button"><span><span><input type="submit" name="reserve" value="Cancel Reservation"></span></span></div>
+                        @* <div class="button"><span><span><a href="#">Cancel Reservation</a></span></span></div>*@
+                    </form>
+                </div>
+            </div>
+            <!-- box end -->
+
+        </div>
+        @* <div class="aside maxheight">
+            <!-- box begin -->
+            <div class="box maxheight">
+              <div class="inner">
+                <h3>Change Reservation</h3>
+                <form method="post" action ="../UserBooking/Change" id="Form4">
+                  <fieldset>
+                    <div class="field">
+                      <label>Previous Check In :</label>
+
+                        <input type="date" name="CancelDate1"/>
+
+                    </div>
+                    <div class="field">
+                      <label>Previous Check Out :</label>
+
+                        <input type="date"  name="CancelDate2"/>
+                    </div>
+                    <div class="field">Persons : &nbsp;
+                      @Html.TextBoxFor(Model=>Model.noOfPeople)
+                      &nbsp; &nbsp; &nbsp; &nbsp;User Id :&nbsp;
+                        @Html.TextBoxFor(model=>model.userId)>
+                         <label>Category :</label>
+                         <select class="s1">
+                        <option>Business Class</option>
+                        <option>Discounted Class</option>
+                        <option>Premium Class</option>
+                      </select>
+
+                    </div>
+
+                      <div class="field">
+                      <label>Check In :</label>
+
+                        <input type="date" name="CancelDate3"/>
+
+                    </div>
+                    <div class="field">
+                      <label>Check Out :</label>
+
+                        <input type="date"  name="CancelDate4"/>
+                    </div>
+                    <div class="field">New no of Persons : &nbsp;
+                      @Html.TextBoxFor(Model=>Model.noOfPeople)
+                      &nbsp; &nbsp; &nbsp; &nbsp;User Id :&nbsp;
+                        @Html.TextBoxFor(model=>model.userId)>
+                         <label>New Category :</label>
+                         <select class="s1">
+                        <option>Business Class</option>
+                        <option>Discounted Class</option>
+                        <option>Premium Class</option>
+                      </select>
+
+                    </div>
+        *@
+
+        @*</fieldset>*@
+        @*                <div class="button"><span><span><input type="submit" name="reserve" value="Cancel Reservation"></span></span></div>*@
+        @* <div class="button"><span><span><a href="#">Cancel Reservation</a></span></span></div>*@
+        </form>
+    </div>
+</div>
+<!-- box end -->
+      </div>
+
+    </div>
+  </div>
+@* <!-- footer -->
+    <div id="footer">
+      <ul class="nav">
+      </ul>
+      <div class="wrapper">
+        <div class="fleft">Copyright &copy; 2009 <a href="#">Name Here</a>. All Rights Reserved</div>
+
+      </div>
+    </div>
+      </div>*@
+@*  </body>
+    </html>*@
